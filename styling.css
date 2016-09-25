@@ -1,0 +1,40 @@
+.gamefield {
+    background-color: #e57554;
+    width:1200px;
+    height:600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#hand1_div {
+    background-color: #ff8193;
+    max-width: 50%;
+    max-height: 33.33%;
+    min-height: 33.33%;
+    display: block;
+}
+
+#hand2_div {
+    background-color: #ffbb74;
+    max-width: 50%;
+    max-height: 33.33%;
+    min-height: 33.33%;
+    display: block;
+}
+
+#hand3_div {
+    background-color: #a3ffcd;
+    max-width: 50%;
+    max-height: 33.33%;
+    min-height: 33.33%;
+    display: block;
+}
+
+
+.rotate90 {
+    min-height: 100%;
+    display: block;
+    margin: 0 auto;
+}

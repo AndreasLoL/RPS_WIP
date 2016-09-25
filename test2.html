@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="stylingTest2.css">
+    <script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+    <div class="divWrapper">
+        <div id="p1">
+            <div class="imageWrapperLeft" id="p1_container0">
+                <img class="imgValues" src="images/hand1_transparent_left.png" onclick="onHandSelected(0)">
+            </div>
+            <div class="imageWrapperLeft" id="p1_container1">
+                <img class="imgValues" src="images/hand2_transparent_left.png" onclick="onHandSelected(1)">
+            </div>
+            <div class="imageWrapperLeft" id="p1_container2">
+                <img class="imgValues" src="images/hand3_transparent_left.png" onclick="onHandSelected(2)">
+            </div>
+        </div>
+        <div id="p2">
+            <div class="imageWrapperRight">
+                <img class="imgValues2" src="images/hand1_transparent.png">
+            </div>
+            <div class="imageWrapperRight">
+                <img class="imgValues2" src="images/hand2_transparent.png">
+            </div>
+            <div class="imageWrapperRight">
+                <img class="imgValues2" src="images/hand3_transparent.png">
+            </div>
+        </div>
+        <div id="gb">
+
+            <div class="gameWrapper">
+                <div id="matchup_display1">
+                    <img src="hands0.png" class="imgValues">
+                </div>
+                <div id="matchup_display2">
+                    <h1>
+                        VS.
+                    </h1>
+                </div>
+                <div id="matchup_display3">
+                    <img src="hands0.png" class="imgValues2">
+                </div>
+            </div>
+            <div class="gameWrapper"  style="background-color: #010bff;">
+                <img src="c3.png" id="countdown" onclick="resetTimer()">
+                <h1 id="result">RESULT</h1>
+            </div>
+            <div class="gameWrapper">
+            </div>
+
+
+        </div>
+    </div>
+
+    <button onclick="resetTimer()">reset</button>
+
+    <script type="text/javascript">
+
+        $('#result').hide();
+
+        var gameResult;
+        var p1Blinking;
+        var timer;
+        var count;
+        var onGoing = false;
+        var p1Val = 0;
+
+        function endCountdown() {
+            onGoing = false;
+            $('#countdown').hide().attr('src', 'c3.png');
+            $('#result').text(gameResult).show();
+        }
+
+        function handleTimer() {
+            if(count === 0) {
+                clearInterval(timer);
+                clearInterval(p1Blinking)
+                endCountdown();
+            } else {
+                $('#countdown').attr('src','c'+count+'.png').animate({zoom: '125%'}, 999).animate({zoom: '75%'}, 1);
+                count--;
+            }
+        }
+
+        function resetTimer() {
+            if (!onGoing){
+                count = 3;
+                timer = setInterval(function() { handleTimer(count); }, 1000);
+                p1Blinking = setInterval(function(){blink("#p1_container"+p1Val)}, 200);
+                onGoing = true;
+                $('#result').hide();
+                $('#countdown').show();
+            }
+        }
+
+
+        function onHandSelected(handValue) {
+            //0 -> Rock 1 -> Paper 2 -> Scissors
+            if (onGoing) {
+                return;
+            }
+            var computerValue = Math.floor(Math.random() * 3);
+            p1Val = handValue;
+            if ((handValue == 0 && computerValue == 1) || (handValue == 1 && computerValue == 2)
+                    || (handValue == 2 && computerValue == 0)) {
+                gameResult = "You: " + getCorrespondingName(handValue) + ". YOU WON ."
+                        + getCorrespondingName(computerValue) + ": Computer"
+            } else {
+                gameResult = "You: " + getCorrespondingName(handValue) + ". YOU LOST ."
+                        + getCorrespondingName(computerValue) + ": Computer"
+            }
+
+            resetTimer();
+
+        }
+
+        function getCorrespondingName(handValue) {
+            switch (handValue) {
+                case 0:
+                    return "Rock";
+                case 1:
+                    return "Paper";
+                case 2:
+                    return "Scissors";
+            }
+        }
+
+        function blink(element_name) {
+            $(element_name).fadeTo(100, 0.1).fadeTo(200, 1.0);
+        }
+    </script>
+
+
+
+</body>
+</html>

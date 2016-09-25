@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @-webkit-keyframes colorchange {
+            11% {
+                -webkit-transform: scale(1.0) rotate(30deg);
+            }
+            22% {
+                -webkit-transform: scale(1.0) rotate(-30deg);
+            }
+            44% {
+                -webkit-transform: scale(1.0) rotate(30deg);
+            }
+            55% {
+                -webkit-transform: scale(1.0) rotate(-30deg);
+            }
+            77% {
+                -webkit-transform: scale(1.0) rotate(30deg);
+            }
+            88% {
+                -webkit-transform: scale(1.0) rotate(-30deg);
+            }
+        }
+    </style>
+
+    <script>
+        function colorchange(e) {
+            if (e.style.webkitAnimationName !== 'colorchange') {
+                e.style.webkitAnimationName = 'colorchange';
+                e.style.webkitAnimationDuration = '2s';
+
+                // make sure to reset the name after 4 seconds, otherwise another call to colorchange wont have any effect
+                setTimeout(function() {
+                    e.style.webkitAnimationName = '';
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+
+<body>
+<img class="hand" onclick="colorchange(this)" src="http://www.worldwhiteweb.net/images/hands/human-hand.jpg" width="200px">
+</body>
+</html>

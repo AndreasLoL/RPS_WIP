@@ -1,0 +1,131 @@
+html,body {
+    height:75%;
+    width:75%;
+}
+
+.divWrapper {
+    width:100%;
+    height:100%;
+    background-color: #e57554;
+    margin-top:-10px;
+    margin-left:-10px;
+}
+
+.imageWrapperLeft {
+    width: 100%;
+    height: 33.33%;
+    display:flex;
+    /*align-items:center;*/
+    /*justify-content:center;*/
+    /*border: 1px solid black;*/
+}
+
+.imageWrapperRight {
+    width: 100%;
+    height: 33.33%;
+    display:flex;
+    /*align-items:center;*/
+    justify-content: flex-end;
+    /*border: 1px solid black;*/
+}
+
+.gameWrapper {
+    width: 100%;
+    height: 33.33%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    /*border: 1px solid black;*/
+}
+
+.imgValues {
+    max-width:100%;
+    max-height:80%;
+}
+
+.imgValues:hover {
+    transform: scale(1.1);
+}
+
+.imgValues2 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    max-width:100%;
+    max-height:80%;
+}
+
+
+#p1 {
+    background-color: #a3ffcd;
+    width:25%;
+    float:left;
+    height:100%;
+}
+
+#p2 {
+    background-color: #ff41ba;
+    width:25%;
+    height:100%;
+    float:right;
+}
+
+#gb {
+    background-color: #ff8193;
+    width:50%;
+    margin:0 auto;
+    height:100%;
+    align-items: stretch;
+    /*display: flex;*/
+    /*justify-content: center; !* align horizontal *!*/
+    /*align-items: center; !* align vertical *!*/
+}
+
+#countdown {
+    max-width:100%;
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#result {
+    max-width:100%;
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#matchup_display1 {
+    background-color: #ff3844;
+    width:33.33%;
+    float:left;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#matchup_display2 {
+    background-color: #a536ff;
+    width:33.33%;
+    margin:0 auto;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#matchup_display3 {
+    background-color: #4a91ff;
+    width:33.33%;
+    height:100%;
+    float:right;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+

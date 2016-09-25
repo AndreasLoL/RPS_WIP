@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anim</title>
+    <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+     <div class="gamefield">
+
+         <div id="hand1_div">
+             <img src="hands0.png" class="rotate90">
+         </div>
+         <div id="hand2_div">
+             <img src="hands1.png" class="rotate90">
+         </div>
+         <div id="hand3_div">
+             <img src="hands2.png" class="rotate90" width="100px" height="100px">
+         </div>
+     </div>
+     <p id="asd">asd</p>
+     <button onclick="resetTimer()">START</button>
+
+
+
+     <script type="text/javascript">
+
+         var timer;
+         var count;
+         var onGoing = false;
+
+         function endCountdown() {
+             onGoing = false;
+         }
+
+         function handleTimer() {
+             if(count === 0) {
+                 clearInterval(timer);
+                 endCountdown();
+             } else {
+                 $("#asd").html(count);
+                 count--;
+             }
+         }
+
+         function resetTimer() {
+             if (!onGoing){
+                 count = 10;
+                 timer = setInterval(function() { handleTimer(count); }, 1000);
+                 onGoing = true;
+             }
+         }
+     </script>
+
+</body>
+</html>
