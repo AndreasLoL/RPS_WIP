@@ -11,31 +11,31 @@
     <div class="divWrapper">
         <div id="p1">
             <div class="imageWrapperLeft" id="p1_container0">
-                <img class="imgValues" src="images/hand1_transparent_left.png" onclick="onHandSelected(0)">
+                <img class="imgValues" src="images/hand1_left.png" onclick="onHandSelected(0)">
             </div>
             <div class="imageWrapperLeft" id="p1_container1">
-                <img class="imgValues" src="images/hand2_transparent_left.png" onclick="onHandSelected(1)">
+                <img class="imgValues" src="images/hand2_left.png" onclick="onHandSelected(1)">
             </div>
             <div class="imageWrapperLeft" id="p1_container2">
-                <img class="imgValues" src="images/hand3_transparent_left.png" onclick="onHandSelected(2)">
+                <img class="imgValues" src="images/hand3_left.png" onclick="onHandSelected(2)">
             </div>
         </div>
         <div id="p2">
             <div class="imageWrapperRight">
-                <img class="imgValues2" src="images/hand1_transparent.png">
+                <img class="imgValues2" src="images/hand1_right.png">
             </div>
             <div class="imageWrapperRight">
-                <img class="imgValues2" src="images/hand2_transparent.png">
+                <img class="imgValues2" src="images/hand2_right.png">
             </div>
             <div class="imageWrapperRight">
-                <img class="imgValues2" src="images/hand3_transparent.png">
+                <img class="imgValues2" src="images/hand3_right.png">
             </div>
         </div>
         <div id="gb">
 
             <div class="gameWrapper">
                 <div id="matchup_display1">
-                    <img src="hands0.png" class="imgValues">
+                    <img class="matchup_hand" id="player1_hand" src="images/hand1_left.png">
                 </div>
                 <div id="matchup_display2">
                     <h1>
@@ -43,7 +43,7 @@
                     </h1>
                 </div>
                 <div id="matchup_display3">
-                    <img src="hands0.png" class="imgValues2">
+                    <img class="matchup_hand" id="player2_hand" src="images/hand1_right.png">
                 </div>
             </div>
             <div class="gameWrapper"  style="background-color: #010bff;">
@@ -51,6 +51,7 @@
                 <h1 id="result">RESULT</h1>
             </div>
             <div class="gameWrapper">
+                <h1 id="scoreBoard">0 - 0</h1>
             </div>
 
 
@@ -62,6 +63,10 @@
     <script type="text/javascript">
 
         $('#result').hide();
+        $("#matchup_hand1").click(function(e){
+            $(this).toggleClass('toggleShake');
+            e.preventDefault();
+        });
 
         var gameResult;
         var p1Blinking;
@@ -69,11 +74,19 @@
         var count;
         var onGoing = false;
         var p1Val = 0;
+        var computerValue = 0;
+        var p1Score = 0;
+        var p2Score = 0;
 
         function endCountdown() {
             onGoing = false;
             $('#countdown').hide().attr('src', 'c3.png');
             $('#result').text(gameResult).show();
+            $(".matchup_hand").toggleClass('toggleShake', false);
+            $("#player1_hand").attr('src', "images/" + getCorrespondingImage(p1Val) + "_left.png");
+            $("#player2_hand").attr('src', "images/" + getCorrespondingImage(computerValue) + "_right.png");
+            $("#scoreBoard").text(p1Score + " - " + p2Score);
+
         }
 
         function handleTimer() {
@@ -90,11 +103,14 @@
         function resetTimer() {
             if (!onGoing){
                 count = 3;
+                $("#player1_hand").attr('src', "images/" + getCorrespondingImage(0) + "_left.png");
+                $("#player2_hand").attr('src', "images/" + getCorrespondingImage(0) + "_right.png");
                 timer = setInterval(function() { handleTimer(count); }, 1000);
                 p1Blinking = setInterval(function(){blink("#p1_container"+p1Val)}, 200);
                 onGoing = true;
                 $('#result').hide();
                 $('#countdown').show();
+                $(".matchup_hand").toggleClass('toggleShake', true);
             }
         }
 
@@ -104,15 +120,17 @@
             if (onGoing) {
                 return;
             }
-            var computerValue = Math.floor(Math.random() * 3);
+            computerValue = Math.floor(Math.random() * 3);
             p1Val = handValue;
-            if ((handValue == 0 && computerValue == 1) || (handValue == 1 && computerValue == 2)
-                    || (handValue == 2 && computerValue == 0)) {
-                gameResult = "You: " + getCorrespondingName(handValue) + ". YOU WON ."
-                        + getCorrespondingName(computerValue) + ": Computer"
+            if (computerValue == handValue) {
+                gameResult = "TIE!"
+            } else if ((handValue == 1 && computerValue == 0) || (handValue == 0 && computerValue == 2)
+                    || (handValue == 2 && computerValue == 1)) {
+                gameResult = "VICTORY!"
+                p1Score += 1;
             } else {
-                gameResult = "You: " + getCorrespondingName(handValue) + ". YOU LOST ."
-                        + getCorrespondingName(computerValue) + ": Computer"
+                gameResult = "DEFEAT!"
+                p2Score += 1;
             }
 
             resetTimer();
@@ -127,6 +145,17 @@
                     return "Paper";
                 case 2:
                     return "Scissors";
+            }
+        }
+
+        function getCorrespondingImage(handValue) {
+            switch (handValue) {
+                case 0:
+                    return "hand1";
+                case 1:
+                    return "hand2";
+                case 2:
+                    return "hand3";
             }
         }
 
