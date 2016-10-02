@@ -1,6 +1,14 @@
 html,body {
-    height:75%;
-    width:75%;
+    height: 75%;
+    width: 75%;
+}
+
+@media screen and (max-width: 750px) {
+    html, body {
+        background-color: #4a91ff;
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .divWrapper {

@@ -1,0 +1,227 @@
+body {
+    background-color: #99c4d4;
+}
+
+
+@font-face {
+    font-family: 'Arcade';
+    src: url("../fonts/arcadeclassic.ttf");
+}
+
+@media (max-width: 599px) {
+    #main_div {
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        border-radius:15px;
+        box-shadow: 5px 5px 3px #000;
+        width: 80vw;
+        display: block;
+        margin: 0 auto;
+        height: 95vh;
+        background-color: #658e9e;
+    }
+
+    #history_div {
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        border-radius:15px;
+        box-shadow: 5px 5px 3px #000;
+        width: 80vw;
+        display: block;
+        margin: 30px auto 30px auto;
+        height: 95vh;
+        background-color: #658e9e
+    }
+
+    #game_hand_area {
+        border: 2px solid black;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        margin: 5% 15px 15px;
+        width: 95%;
+        height: 40%;
+        display:flex;
+    }
+}
+
+@media (min-width: 600px) {
+    #main_div {
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        border-radius:15px;
+        box-shadow: 5px 5px 3px #000;
+        width: 40vw;
+        display: block;
+        margin-right: 30px;
+        margin-left: 15px;
+        height: 95vh;
+        background-color: #658e9e;
+        float: left;
+    }
+
+    #history_div {
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        border-radius:15px;
+        box-shadow: 5px 5px 3px #000;
+        width: 40vw;
+        display: block;
+        height: 95vh;
+        float: left;
+        background-color: #658e9e
+    }
+
+    #game_hand_area {
+        border: 2px solid black;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        margin: 5% 15px 15px;
+        width: 95%;
+        height: 35%;
+        display:flex;
+    }
+}
+
+#game_area {
+     width: 100%;
+     height: 20%;
+     display:flex;
+}
+
+#hand1_div {
+    width:33.33%;
+    float:left;
+    margin: 0;
+    height:100%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#hand2_div {
+    width:33.33%;
+    margin:0 auto;
+    height:100%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#hand3_div {
+    width:33.33%;
+    height:100%;
+    margin: 0;
+    float:right;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.bottom_hands {
+    max-width:91.5%;
+    max-height:91.5%;
+}
+
+.bottom_hands:hover {
+    transform: scale(1.1);
+}
+
+#hand3_pos {
+    float:right;
+}
+
+#hand2_pos {
+    float: right;
+}
+
+#matchup_display1 {
+    width:40%;
+    float:left;
+    margin: 0;
+    display: flex;
+    height:100%;
+    align-items:center;
+    justify-content:center;
+}
+
+#matchup_display2 {
+    width:20%;
+    margin:0 auto;
+    height:100%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#matchup_display3 {
+    width:40%;
+    height:100%;
+    margin: 0;
+    float:right;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+
+}
+
+#player2_hand {
+    float:right;
+}
+
+img {
+    max-width:100%;
+    max-height:100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arcade;
+    font-size: calc(2vw + 2vh);
+}
+
+h2 {
+    margin-top: 25px;
+    font-size: calc(1.5vw + 1.5vh);
+    text-align: center;
+    font-family: Arcade;
+}
+
+#result_field{
+    text-align: center;
+    font-family: Arcade;
+    font-size: calc(2vw + 2vh);
+}
+
+li {
+    font-family: Arcade;
+    font-size: calc(1vw + 1vh);
+}
+
+
+
+.toggleShake {
+    -webkit-animation: shake 1s 4;
+    -o-animation: shake 1s 4;
+    animation: shake 1s 4;
+}
+
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(0, -6px, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(0, 7px, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(0, -9px, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(0, 9px, 0);
+    }
+}

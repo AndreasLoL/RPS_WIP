@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Rock, Paper & Scissors</title>
+    <link rel="stylesheet" type="text/css" href="styling/style.css">
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+    <div id="main_div">
+
+        <div style="height: 35%;">
+            <div style="height: 75%; width: 100%;">
+                <h1>Rock-Paper-Scissors</h1>
+                <h2 id="win_percentage">Game #1 (0%)</h2>
+                <h1 id="game_score">0 - 0</h1>
+            </div>
+
+            <div style="float: left; height: 20%; width: 50%;">
+                <h2 style="margin-left: 15px;text-align: left;">You</h2>
+            </div>
+            <div style="float: right; height: 20%; width: 50%;">
+                <h2 style="margin-right: 15px; text-align: right;">Computer</h2>
+            </div>
+        </div>
+
+        <div id="game_area">
+            <div id="matchup_display1">
+                <img class="matchup_hand" id="player1_hand" src="images/hand1_left.png">
+            </div>
+            <div id="matchup_display2">
+                <h1 id="result_field">
+                    VS.
+                </h1>
+            </div>
+            <div id="matchup_display3">
+                <img class="matchup_hand" id="player2_hand" src="images/hand1_right.png">
+            </div>
+        </div>
+        <div id="game_hand_area">
+            <div id="hand1_div">
+                <img class="bottom_hands" src="images/hand1_up.png" onclick="onHandSelected(0)">
+            </div>
+            <div id="hand2_div">
+                <img id="hand2_pos" class="bottom_hands" src="images/hand2_up.png" onclick="onHandSelected(1)">
+            </div>
+            <div id="hand3_div">
+                <img id="hand3_pos" class="bottom_hands" src="images/hand3_up.png" onclick="onHandSelected(2)">
+            </div>
+        </div>
+    </div>
+
+   <div id="history_div">
+       <h1>History</h1>
+       <ol style="max-height: 75%; overflow: auto; max-width: 90%;">
+       </ol>
+
+   </div>
+
+    <script src="scripts/gamemanager.js"></script>
+
+</body>
+</html>
